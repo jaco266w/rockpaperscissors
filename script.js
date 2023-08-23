@@ -4,12 +4,10 @@ const lose = document.querySelector("#lose");
 const win = document.querySelector("#win");
 const draw = document.querySelector("#draw");
 const rock = document.querySelector(".rock");
-const paper = document.querySelector(".paper");
-const scissors = document.querySelector(".scissors");
-const buttons = document.querySelector("#buttons");
 const p1 = document.querySelector("#player1");
-const p2 = document.querySelector("#player2"); 
-
+const p2 = document.querySelector("#player2");
+const knap = document.querySelectorAll("button"); 
+console.log(knap);
 let element;
 let mTal;
 
@@ -18,13 +16,9 @@ window.addEventListener("load", sidenVises);
 function sidenVises() {
     console.log("Siden Vises");
 
-    buttons.classList = " ";
-    p1.classList = "player";
-    p2.classList = "player";
-
-    rock.addEventListener("click", start);
-    paper.addEventListener("click", start);
-    scissors.addEventListener("click", start);
+    knap.forEach(knap => {
+        knap.addEventListener("click", start);
+    });
 }
 
 function start() {
@@ -39,9 +33,9 @@ function start() {
     draw.classList.add("hidden");
     lose.classList.add("hidden");
 
-    rock.removeEventListener("click", start);
-    paper.removeEventListener("click", start);
-    scissors.removeEventListener("click", start);
+    knap.forEach(knap => {
+        knap.removeEventListener("click", start);
+    });
     
     element = this;
 
@@ -86,44 +80,30 @@ function modstander() {
 function end() {
     console.log("end");
     if (p1.classList.contains("rock") && p2.classList.contains("scissors")) {
-        win.classList.remove("hidden");
-        draw.classList.add("hidden");
-        lose.classList.add("hidden");
+       vind();
     }
     else if (p1.classList.contains("rock") && p2.classList.contains("rock")) {
-        draw.classList.remove("hidden");
-        win.classList.add("hidden");
-        lose.classList.add("hidden");
+        uaf();
     }
     
     else if (p1.classList.contains("paper") && p2.classList.contains("rock")) {
-        win.classList.remove("hidden");
-        draw.classList.add("hidden");
-        lose.classList.add("hidden");
+        vind();
     }
     
     else if (p1.classList.contains("paper") && p2.classList.contains("paper")) {
-        draw.classList.remove("hidden");
-        win.classList.add("hidden");
-        lose.classList.add("hidden");
+        uaf();
     }
 
     else if (p1.classList.contains("scissors") && p2.classList.contains("paper")) {
-        win.classList.remove("hidden");
-        draw.classList.add("hidden");
-        lose.classList.add("hidden");
+        vind();
     }
     
     else if (p1.classList.contains("scissors") && p2.classList.contains("scissors")) {
-        draw.classList.remove("hidden");
-        win.classList.add("hidden");
-        lose.classList.add("hidden");
+        uaf();
     }
 
     else {
-        lose.classList.remove("hidden");
-        draw.classList.add("hidden");
-        win.classList.add("hidden");
+        tab();
     }
     restart();
 }
@@ -131,8 +111,29 @@ function end() {
 function restart() {
     console.log("restart");
     buttons.classList.remove("disabled");
-    rock.addEventListener("click", start);
-    paper.addEventListener("click", start);
-    scissors.addEventListener("click", start);
+    
+    knap.forEach(knap => {
+        knap.addEventListener("click", start);
+    });
 }
 
+function vind() {
+    console.log("win");
+    win.classList.remove("hidden");
+    draw.classList.add("hidden");
+    lose.classList.add("hidden");
+}
+
+function uaf() {
+    console.log("draw");
+    draw.classList.remove("hidden");
+    win.classList.add("hidden");
+    lose.classList.add("hidden");
+}
+
+function tab() {
+    console.log("lose");
+    lose.classList.remove("hidden");
+    draw.classList.add("hidden");
+    win.classList.add("hidden");
+}
