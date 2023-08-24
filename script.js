@@ -66,11 +66,11 @@ function show() {
 function modstander() {
     console.log("modstander");
     p2.classList = "player";
-     mTal = Math.floor(Math.random() * 3) + 1;
+     mTal = parseInt(Math.floor(Math.random() * 3) + 1);
      console.log(mTal);
-    if (mTal == 1) {
+    if (mTal === 1) {
         p2.classList.add("rock");
-    } else if (mTal == 2) {
+    } else if (mTal === 2) {
         p2.classList.add("paper");
     } else {
         p2.classList.add("scissors");
