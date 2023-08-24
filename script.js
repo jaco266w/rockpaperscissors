@@ -48,6 +48,7 @@ function start(event) {
 function show() {
     console.log("show")
     console.log(element);
+    p1.removeEventListener("animationend", show);
     p1.classList = "player";
     if (element.classList.contains("rock")) {
         p1.classList.add("rock");
@@ -66,8 +67,8 @@ function show() {
 function modstander() {
     console.log("modstander");
     p2.classList = "player";
-     mTal = parseInt(Math.floor(Math.random() * 3) + 1);
-     console.log(mTal);
+    mTal = parseInt(Math.floor(Math.random() * 3) + 1);
+    console.log(mTal);
     if (mTal === 1) {
         p2.classList.add("rock");
     } else if (mTal === 2) {
