@@ -37,7 +37,7 @@ function start() {
         knap.removeEventListener("click", start);
     });
     
-    element = this;
+    element = event.target;
 
     buttons.classList.add("disabled");
     p1.classList.add("shake");
