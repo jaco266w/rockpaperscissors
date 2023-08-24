@@ -21,7 +21,7 @@ function sidenVises() {
     });
 }
 
-function start() {
+function start(event) {
     console.log("start");
     console.log(this);
     
