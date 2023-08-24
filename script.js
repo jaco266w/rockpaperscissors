@@ -121,20 +121,14 @@ function restart() {
 function vind() {
     console.log("win");
     win.classList.remove("hidden");
-    draw.classList.add("hidden");
-    lose.classList.add("hidden");
 }
 
 function uaf() {
     console.log("draw");
     draw.classList.remove("hidden");
-    win.classList.add("hidden");
-    lose.classList.add("hidden");
 }
 
 function tab() {
     console.log("lose");
     lose.classList.remove("hidden");
-    draw.classList.add("hidden");
-    win.classList.add("hidden");
 }
